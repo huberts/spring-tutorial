@@ -2,13 +2,12 @@ package pl.hubiq.hubspringtut1;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import pl.hubiq.componentscan.ComponentDAO;
 
-@SpringBootApplication
+@Configuration
 @ComponentScan("pl.hubiq.componentscan")
 public class HubSpringComponentScanApplication {
 
@@ -16,10 +15,12 @@ public class HubSpringComponentScanApplication {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = SpringApplication.run(HubSpringComponentScanApplication.class, args);
+        try (AnnotationConfigApplicationContext applicationContext =
+                     new AnnotationConfigApplicationContext(HubSpringComponentScanApplication.class)) {
 
-        ComponentDAO componentDAO = applicationContext.getBean(ComponentDAO.class);
+            ComponentDAO componentDAO = applicationContext.getBean(ComponentDAO.class);
 
-        LOGGER.info("{}", componentDAO);
+            LOGGER.info("{}", componentDAO);
+        }
     }
 }

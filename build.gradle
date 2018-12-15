@@ -25,7 +25,10 @@ repositories {
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter')
+	implementation('org.springframework:spring-core')
+	implementation('org.springframework:spring-context')
+	implementation('org.slf4j:slf4j-api')
+	implementation('ch.qos.logback:logback-classic')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
     compile group: 'javax.inject', name: 'javax.inject', version: '1'
 }
