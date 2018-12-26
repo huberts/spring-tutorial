@@ -14,8 +14,10 @@ public class HubSpringXmlApplication {
         try (ClassPathXmlApplicationContext applicationContext =
                      new ClassPathXmlApplicationContext("applicationContext.xml")) {
 
-            XmlPersonDAO xmlPersonDAO = applicationContext.getBean(XmlPersonDAO.class);
-            LOGGER.info("{}", xmlPersonDAO);
+            LOGGER.info("Beans loaded -> {}", (Object) applicationContext.getBeanDefinitionNames());
+
+                    XmlPersonDAO xmlPersonDAO = applicationContext.getBean(XmlPersonDAO.class);
+            LOGGER.info("{}, {}", xmlPersonDAO ,xmlPersonDAO.getXmlJdbcConnection());
         }
     }
 }
