@@ -1,9 +1,9 @@
 package pl.hubiq.hubspringtut1.scope;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class PersonDAO {
 
     private final JdbcConnection jdbcConnection;
